@@ -3,7 +3,11 @@ name: Python Workflow
 on:
   push:
     branches:
+<<<<<<< HEAD
       - main  
+=======
+      - main  # Adjust this branch name if needed
+>>>>>>> bde0aa5f3c22c5717ee95782705d0db8670d8f5b
 
 jobs:
   test:
