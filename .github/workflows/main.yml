@@ -1,13 +1,25 @@
-name: CI
+name: Python Workflow
 
-on: [push]
+on:
+  push:
+    branches:
+      - main  
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Check out code
+      uses: actions/checkout@v2
 
-    - name: Run tests
-      run: npm test
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10' 
+        
+    - name: Install dependencies
+      run: pip install -r requirements.txt  
+
+    - name: Run all tests
+      run: python -m unittest discover tests
